@@ -178,9 +178,25 @@ function data(data) {
           </div>
           <div class="item__footer">
             <span class="item__genre">${media[i].genres.slice(0, 3).join(' - ')}</span>
+            <span class="item__expand"><i class="fas fa-expand"></i></span>
           </div>   
         </div>
       </div>
     `
+    expandItem();
+  }
+}
+
+// Expand item information
+function expandItem() {
+  const itemExpand = document.querySelectorAll('.item__expand');
+  for (let i = 0; i < itemExpand.length; ++i) {
+    itemExpand[i].addEventListener('click', () => {
+      // Toggle between classes to expand item information
+      itemExpand[i].classList.toggle('item__expand--active');
+      document.querySelectorAll('.item')[i].classList.toggle('item--expand');
+      document.querySelectorAll('.item__cover')[i].classList.toggle('item__cover--expand');
+      document.querySelectorAll('.item__title')[i].classList.toggle('item__title--expand');
+    })
   }
 }

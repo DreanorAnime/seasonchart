@@ -32,13 +32,13 @@ body {
     grid-template-columns: 180px auto;
     background-color: #36393F;
     box-shadow: 0 0 25px -15px rgba(0, 0, 0, 0.8); }
+  .list .item--expand {
+    grid-template-columns: 50px auto; }
 
 .item__thumbnail {
   display: block;
   position: relative;
   overflow: hidden; }
-  .item__thumbnail:hover .item__title {
-    opacity: 0; }
   .item__thumbnail .item__title {
     z-index: 10;
     position: absolute;
@@ -52,17 +52,18 @@ body {
     background-color: rgba(32, 34, 37, 0.9);
     color: #ffffff;
     font-size: 0.8em;
-    font-weight: 100;
-    -webkit-transition: all 0.1s;
-    -moz-transition: all 0.1s;
-    -o-transition: all 0.1s;
-    transition: all 0.1s; }
+    font-weight: 100; }
+  .item__thumbnail .item__title--expand {
+    display: none; }
   .item__thumbnail .item__cover {
     position: absolute;
-    width: 100%;
+    width: 180px;
     height: 100%;
     object-fit: cover;
     object-position: center; }
+  .item__thumbnail .item__cover--expand {
+    height: 100%;
+    width: 180px; }
 
 .item__about {
   position: relative; }
@@ -116,14 +117,33 @@ body {
       margin-bottom: 10px;
       color: rgba(255, 255, 255, 0.8); }
   .item__about .item__footer {
+    position: relative;
     display: grid;
     align-items: center;
     width: 100%;
     height: 35px;
     background-color: #202225;
-    color: #72abda;
-    font-size: 0.7em;
     text-align: center; }
+    .item__about .item__footer .item__genre {
+      color: #72abda;
+      font-size: 0.7em; }
+    .item__about .item__footer .item__expand {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      display: grid;
+      align-items: center;
+      height: 35px;
+      width: 35px;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.8); }
+      .item__about .item__footer .item__expand:hover {
+        color: #ffffff;
+        cursor: pointer; }
+    .item__about .item__footer .item__expand--active {
+      color: #72abda; }
+      .item__about .item__footer .item__expand--active:hover {
+        color: #8acaff; }
 
 @media (max-width: 1500px) {
   .wrapper {
@@ -144,6 +164,8 @@ body {
     grid-template-columns: 1fr; }
     .list .item {
       grid-template-columns: 150px auto; }
+    .list .item--expand {
+      grid-template-columns: 50px auto; }
 
   .item__information {
     height: 100px; } }

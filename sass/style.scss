@@ -21,6 +21,7 @@ $mainDark: #2F3136;
 $mainDarkest: #202225;
 
 $blue: #72abda;
+$blueHover: #8acaff;
 $white: #ffffff;
 
 //==================== GENERAL ==================== //
@@ -63,6 +64,9 @@ body {
     background-color: $main;
     box-shadow: 0 0 25px -15px rgba(0, 0, 0, 0.8);
   }
+  .item--expand { // Expand item option
+    grid-template-columns: 50px auto;
+  }
 }
 
 // Thumbnail
@@ -70,9 +74,6 @@ body {
   display: block;
   position: relative;
   overflow: hidden;
-  &:hover .item__title {
-    opacity: 0;
-  }
   .item__title {
     z-index: 10;
     position: absolute;
@@ -87,14 +88,20 @@ body {
     color: $white;
     font-size: 0.8em;
     font-weight: 100;
-    @include transitions;
+  }
+  .item__title--expand { // Expand item option
+    display: none;
   }
   .item__cover {
     position: absolute;
-    width: 100%;
+    width: 180px;
     height: 100%;
     object-fit: cover;
     object-position: center;
+  }
+  .item__cover--expand { // Expand item option
+    height: 100%;
+    width: 180px;
   }
 }
 
@@ -175,14 +182,38 @@ body {
   
   // Footer
   .item__footer {
+    position: relative;
     display: grid;
     align-items: center;
     width: 100%;
     height: 35px;
     background-color: $mainDarkest;
-    color: $blue;
-    font-size: 0.7em;
     text-align: center;
+    .item__genre {
+      color: $blue;
+      font-size: 0.7em;
+    }
+    .item__expand {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      display: grid;
+      align-items: center;
+      height: 35px;
+      width: 35px;
+      text-align: center;
+      color: rgba($white, 0.8);
+      &:hover {
+        color: $white;
+        cursor: pointer;
+      }
+    }
+    .item__expand--active { // Expand item option
+      color: $blue;
+      &:hover {
+        color: $blueHover;
+      }
+    }
   }
 }
 
@@ -212,6 +243,9 @@ body {
     grid-template-columns: 1fr;
     .item {
       grid-template-columns: 150px auto;
+    }
+    .item--expand { // Expand item option
+      grid-template-columns: 50px auto;
     }
   }
   .item__information {
