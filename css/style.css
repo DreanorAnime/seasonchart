@@ -99,15 +99,16 @@ body {
     margin: 15px 0;
     font-size: 0.8em;
     line-height: 1.5em;
-    overflow-y: scroll; }
+    overflow-y: scroll;
+    scrollbar-color: #36393F #36393F;
+    scrollbar-width: thin; }
+    .item__about .item__information:hover {
+      scrollbar-color: #202225 #36393F; }
     .item__about .item__information:hover::-webkit-scrollbar-thumb {
       background-color: #202225; }
     .item__about .item__information::-webkit-scrollbar {
-      width: 7px; }
-    .item__about .item__information::-webkit-scrollbar-track {
-      border-radius: 10px; }
+      width: 6px; }
     .item__about .item__information::-webkit-scrollbar-thumb {
-      border-radius: 10px;
       background-color: #36393F; }
     .item__about .item__information .item__studio {
       display: block;

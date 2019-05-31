@@ -156,17 +156,18 @@ body {
     font-size: 0.8em;
     line-height: 1.5em;
     overflow-y: scroll;
+    scrollbar-color: $main $main; // Firefox compatibility
+    scrollbar-width: thin; // Firefox compatibility
+    &:hover { // Firefox compatibility
+      scrollbar-color: $mainDarkest $main;
+    }
     &:hover::-webkit-scrollbar-thumb {
       background-color: $mainDarkest;
     }
     &::-webkit-scrollbar {
-      width: 7px;
-    }
-    &::-webkit-scrollbar-track {
-      border-radius: 10px;
+      width: 6px;
     }
     &::-webkit-scrollbar-thumb {
-      border-radius: 10px;
       background-color: $main;
     }
     .item__studio {
