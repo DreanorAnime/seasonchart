@@ -48,8 +48,34 @@ body {
 
 .wrapper {
   box-sizing: border-box;
-  padding: 100px 50px;
+  padding: 150px 50px 100px 50px;
   width: 1500px;
+}
+
+//==================== HEADER SECTION ====================//
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 300px;
+  width: 100%;
+  background-color: $mainDarkest;
+  .navbar {
+    width: 100%;
+    padding: 65px 0;
+    text-align: center;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none; 
+     -khtml-user-select: none; 
+       -moz-user-select: none; 
+        -ms-user-select: none; 
+            user-select: none;
+    .navbar__item {
+      margin: 0 10px;
+      color: rgba($white, 0.5);
+      cursor: pointer;
+    }
+  }
 }
 
 //==================== ANIME LIST SECTION ==================== //
@@ -59,6 +85,7 @@ body {
   grid-gap: 30px;
   width: auto;
   .item {
+    z-index: 10;
     display: grid;
     grid-template-columns: 180px auto;
     background-color: $main;
@@ -239,6 +266,11 @@ body {
   .wrapper {
     width: 100%;
     padding: 100px 10px;
+  }
+  .header {
+    .navbar {
+      padding: 40px 0;
+    }
   }
   .list {
     grid-template-columns: 1fr;

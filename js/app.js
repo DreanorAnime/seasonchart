@@ -53,16 +53,12 @@ const query = `
   }
 `;
 
-// Store variables to object item
-const variables = {
-  "page": 1,
-  "seasonYear": 2019,
-  "season": "SPRING"
-};
+// Insert URL to variable
+const url = 'https://graphql.anilist.co';
 
-// Insert URL to variables
-const url = 'https://graphql.anilist.co',
-  options = {
+// Insert options to function
+function option(season) {
+  return options = {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -70,19 +66,112 @@ const url = 'https://graphql.anilist.co',
     },
     body: JSON.stringify({
       query: query,
-      variables: variables
+      variables: {
+        "page": 1,
+        "seasonYear": 2019,
+        "season": season
+      }
     })
-};
+  }
+}
 
-// Fetches anilist API
-fetch(url, options)
+// Display current season
+function season() {
+  const time = new Date();
+  const month = time.getMonth();
+  
+  if (month < 3) { // Display winter
+    document.getElementById('winter').style.color = '#fff';
+    return 'WINTER';
+  } else if (month < 6) { // Display spring
+    document.getElementById('spring').style.color = '#fff';
+    return 'SPRING';
+  } else if (month < 9) { // Display summer
+    document.getElementById('summer').style.color = '#fff';
+    return 'SUMMER';
+  } else { // Display fall
+    document.getElementById('fall').style.color = '#fff';
+    return 'FALL';
+  }
+}
+
+// Fetches anilist API and display on load
+fetch(url, option(season()))
   .then(response => {
     return response.json();
   })
   .then(data)
 
+// Return default navbar item when not active
+function setNavbarItem() {
+  const navbarItem = document.querySelectorAll('.navbar__item');
+  for (let i = 0; i < navbarItem.length; i++){
+    navbarItem[i].style.color = 'rgba(255, 255, 255, 0.5)'
+  }
+}
+
+// Display winter season
+const winter = document.getElementById('winter');
+document.getElementById('winter').addEventListener('click', () =>{
+  setNavbarItem();
+  document.getElementById('winter').style.color = '#fff';
+  document.getElementById('list').innerHTML = '';
+
+  // Fetches anilist API
+  fetch(url, option('WINTER'))
+    .then(response => {
+      return response.json();
+    })
+    .then(data)
+})
+
+// Display spring season
+const spring = document.getElementById('spring');
+spring.addEventListener('click', () =>{
+  setNavbarItem();
+  spring.style.color = '#fff';
+  document.getElementById('list').innerHTML = '';
+
+  // Fetches anilist API
+  fetch(url, option('SPRING'))
+    .then(response => {
+      return response.json();
+    })
+    .then(data)
+})
+
+// Display summer season
+const summer = document.getElementById('summer');
+summer.addEventListener('click', () =>{
+  setNavbarItem();
+  summer.style.color = '#fff';
+  document.getElementById('list').innerHTML = '';
+
+  // Fetches anilist API
+  fetch(url, option('SUMMER'))
+    .then(response => {
+      return response.json();
+    })
+    .then(data)
+})
+
+// Display fall season
+const fall = document.getElementById('fall');
+fall.addEventListener('click', () =>{
+  setNavbarItem();
+  fall.style.color = '#fff';
+  document.getElementById('list').innerHTML = '';
+
+  // Fetches anilist API
+  fetch(url, option('FALL'))
+    .then(response => {
+      return response.json();
+    })
+    .then(data)
+})
+
+// Display anime list
 function data(data) {
-  // Display anime list
   for (let i = 0; i < data.data.Page.media.length; i++){
     const media = data.data.Page.media;
     

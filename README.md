@@ -1,2 +1,2 @@
 # animelist
-An anime list of spring season, 2019.
+An anime list of airing shows by season.
