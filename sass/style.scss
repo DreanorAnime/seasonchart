@@ -15,6 +15,7 @@
   -o-transition: all 1s;
   transition: all 1s;
 }
+
 //==================== MIXINS ==================== //
 $main: #36393F;
 $mainDark: #2F3136;
@@ -245,6 +246,59 @@ body {
   }
 }
 
+//==================== SKELETON SCREEN SECTION ====================//
+.item--skeleton {
+  position: relative;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: 180px auto;
+  height: 273px;
+  background-color: $main;
+  box-shadow: 0 0 25px -15px rgba(0, 0, 0, 0.8);
+  overflow: hidden;
+  .item__thumbnail--skeleton {
+    position: relative;
+    background-color: rgba($white, 0.05);
+    .item__title--skeleton {
+      position: absolute;
+      bottom: 0;
+      height: 35px;
+      width: 100%;
+      background-color: $mainDark;
+    }
+  }
+  .item__about--skeleton {
+    .item__header--skeleton {
+      display: block;
+      height: 68px;
+      width: 100%;
+      background-color: $mainDark;
+    }
+    .item__text--skeleton, .item__textarea--skeleton {
+      display: block;
+      height: 15px;
+      background-color: $mainDark;
+    }
+    .item__text--skeleton {
+      height: 30px;
+      width: 30%;
+      margin: 20px 15px;
+    }
+    .item__textarea--skeleton {
+      width: 70%;
+      margin: 10px 15px;
+    }
+    .item__footer--skeleton {
+      position: absolute;
+      bottom: 0;
+      display: block;
+      background-color: $mainDarkest;
+      height: 35px;
+      width: 100%;
+    }
+  }
+}
+
 //==================== MEDIA SECTION ====================//
 @media (max-width: 1500px){
   .wrapper {
@@ -283,5 +337,8 @@ body {
   }
   .item__information {
     height: 100px;
+  }
+  .item--skeleton {
+    grid-template-columns: 150px auto;
   }
 }

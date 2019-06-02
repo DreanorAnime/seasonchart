@@ -110,12 +110,40 @@ function setNavbarItem() {
   }
 }
 
+// Display skeleton screen
+function displaySkeleton() {
+  var test = `
+  <div class="item--skeleton">
+    <div class="item__thumbnail--skeleton">
+      <span class="item__title--skeleton"></span>
+    </div>
+    <div class="item__about--skeleton">
+      <span class="item__header--skeleton"></span>
+      <span class="item__text--skeleton"></span>
+      <span class="item__textarea--skeleton"></span>   
+      <span class="item__textarea--skeleton"></span>   
+      <span class="item__textarea--skeleton"></span>   
+      <span class="item__footer--skeleton"></span> 
+    </div>
+  </div>
+  `
+  for (let i = 0; i < 9; i++){
+    document.getElementById('list').innerHTML += test;
+  }
+}
+
+// Load skeleton screen on load
+window.onload = function() {
+  displaySkeleton()
+}
+
 // Display winter season
 const winter = document.getElementById('winter');
 document.getElementById('winter').addEventListener('click', () =>{
   setNavbarItem();
   document.getElementById('winter').style.color = '#fff';
   document.getElementById('list').innerHTML = '';
+  displaySkeleton()
 
   // Fetches anilist API
   fetch(url, option('WINTER'))
@@ -131,6 +159,7 @@ spring.addEventListener('click', () =>{
   setNavbarItem();
   spring.style.color = '#fff';
   document.getElementById('list').innerHTML = '';
+  displaySkeleton()
 
   // Fetches anilist API
   fetch(url, option('SPRING'))
@@ -146,6 +175,7 @@ summer.addEventListener('click', () =>{
   setNavbarItem();
   summer.style.color = '#fff';
   document.getElementById('list').innerHTML = '';
+  displaySkeleton();
 
   // Fetches anilist API
   fetch(url, option('SUMMER'))
@@ -161,6 +191,7 @@ fall.addEventListener('click', () =>{
   setNavbarItem();
   fall.style.color = '#fff';
   document.getElementById('list').innerHTML = '';
+  displaySkeleton()
 
   // Fetches anilist API
   fetch(url, option('FALL'))
@@ -172,6 +203,7 @@ fall.addEventListener('click', () =>{
 
 // Display anime list
 function data(data) {
+  document.getElementById('list').innerHTML = '';
   for (let i = 0; i < data.data.Page.media.length; i++){
     const media = data.data.Page.media;
     

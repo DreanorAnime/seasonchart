@@ -169,6 +169,48 @@ body {
       .item__about .item__footer .item__expand--active:hover {
         color: #8acaff; }
 
+.item--skeleton {
+  position: relative;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: 180px auto;
+  height: 273px;
+  background-color: #36393F;
+  box-shadow: 0 0 25px -15px rgba(0, 0, 0, 0.8);
+  overflow: hidden; }
+  .item--skeleton .item__thumbnail--skeleton {
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.05); }
+    .item--skeleton .item__thumbnail--skeleton .item__title--skeleton {
+      position: absolute;
+      bottom: 0;
+      height: 35px;
+      width: 100%;
+      background-color: #2F3136; }
+  .item--skeleton .item__about--skeleton .item__header--skeleton {
+    display: block;
+    height: 68px;
+    width: 100%;
+    background-color: #2F3136; }
+  .item--skeleton .item__about--skeleton .item__text--skeleton, .item--skeleton .item__about--skeleton .item__textarea--skeleton {
+    display: block;
+    height: 15px;
+    background-color: #2F3136; }
+  .item--skeleton .item__about--skeleton .item__text--skeleton {
+    height: 30px;
+    width: 30%;
+    margin: 20px 15px; }
+  .item--skeleton .item__about--skeleton .item__textarea--skeleton {
+    width: 70%;
+    margin: 10px 15px; }
+  .item--skeleton .item__about--skeleton .item__footer--skeleton {
+    position: absolute;
+    bottom: 0;
+    display: block;
+    background-color: #202225;
+    height: 35px;
+    width: 100%; }
+
 @media (max-width: 1500px) {
   .wrapper {
     width: 100%;
@@ -195,6 +237,9 @@ body {
       grid-template-columns: 50px auto; }
 
   .item__information {
-    height: 100px; } }
+    height: 100px; }
+
+  .item--skeleton {
+    grid-template-columns: 150px auto; } }
 
 /*# sourceMappingURL=style.css.map */
