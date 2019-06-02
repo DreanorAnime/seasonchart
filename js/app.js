@@ -228,6 +228,13 @@ function data(data) {
       var studio = '';
     }
 
+    // Check if source is available
+    if (media[i].source != null) {
+      var source = media[i].source.replace('_', ' ');
+    } else {
+      var source = '';
+    }
+
     // Check if description is available
     if (media[i].description != null){
       var description = media[i].description;
@@ -262,7 +269,7 @@ function data(data) {
           </div>
           <div class="item__information">
             <span class="item__studio">${studio}</span>
-            <span class="item__source">Source - ${media[i].source.replace('_', ' ')}</span>
+            <span class="item__source">Source - ${source}</span>
             <p class="item__description">${description}</p>
           </div>
           <div class="item__footer">
