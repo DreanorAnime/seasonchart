@@ -53,6 +53,7 @@ body {
     z-index: 10;
     display: grid;
     grid-template-columns: 180px auto;
+    height: 275px;
     background-color: #36393F;
     box-shadow: 0 0 25px -15px rgba(0, 0, 0, 0.8); }
   .list .item--expand {
@@ -92,8 +93,10 @@ body {
   position: relative; }
   .item__about .item__header {
     display: grid;
+    align-items: center;
     grid-template-columns: 70% 30%;
-    padding: 15px;
+    height: 70px;
+    padding: 0 15px;
     background-color: #2F3136; }
     .item__about .item__header .item__episode--number {
       color: #72abda; }
@@ -174,7 +177,7 @@ body {
   z-index: 10;
   display: grid;
   grid-template-columns: 180px auto;
-  height: 273px;
+  height: 275px;
   background-color: #36393F;
   box-shadow: 0 0 25px -15px rgba(0, 0, 0, 0.8);
   overflow: hidden; }
@@ -189,7 +192,7 @@ body {
       background-color: #2F3136; }
   .item--skeleton .item__about--skeleton .item__header--skeleton {
     display: block;
-    height: 68px;
+    height: 70px;
     width: 100%;
     background-color: #2F3136; }
   .item--skeleton .item__about--skeleton .item__text--skeleton, .item--skeleton .item__about--skeleton .item__textarea--skeleton {

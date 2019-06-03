@@ -89,6 +89,7 @@ body {
     z-index: 10;
     display: grid;
     grid-template-columns: 180px auto;
+    height: 275px;
     background-color: $main;
     box-shadow: 0 0 25px -15px rgba(0, 0, 0, 0.8);
   }
@@ -137,10 +138,12 @@ body {
 .item__about {
   position: relative;
   // Header
-  .item__header{
+  .item__header {
     display: grid;
+    align-items: center;
     grid-template-columns: 70% 30%;
-    padding: 15px;
+    height: 70px;
+    padding: 0 15px;
     background-color: $mainDark;
     .item__episode--number {
       color: $blue;
@@ -252,7 +255,7 @@ body {
   z-index: 10;
   display: grid;
   grid-template-columns: 180px auto;
-  height: 273px;
+  height: 275px;
   background-color: $main;
   box-shadow: 0 0 25px -15px rgba(0, 0, 0, 0.8);
   overflow: hidden;
@@ -270,7 +273,7 @@ body {
   .item__about--skeleton {
     .item__header--skeleton {
       display: block;
-      height: 68px;
+      height: 70px;
       width: 100%;
       background-color: $mainDark;
     }
