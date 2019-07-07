@@ -312,6 +312,13 @@ function data(data) {
     `
     expandItem();
   }
+  // Remove unwanted elements from list (eg. <i>)
+  const list = document.getElementById('list');
+  for (let i = 0; i < list.children.length; ++i) {
+    if (list.children[i].className != 'item') {
+      list.children[i].remove();
+    }
+  }
 }
 
 // Expand item information
