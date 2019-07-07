@@ -12,20 +12,44 @@
 </head>
 <body>
 
-  <div class="header">
-    <div class="navbar">
+  <div class="navbar">
+    <div class="navbar__list">
       <span id ="winter" class="navbar__item">Winter</span>
       <span id ="spring" class="navbar__item">Spring</span>
       <span id ="summer" class="navbar__item">Summer</span>
       <span id ="fall" class="navbar__item">Fall</span>
     </div>
   </div>
-  
-  <div class="wrapper">
 
-    <div id="list" class="list"></div>
-
+  <div class="filter">
+    <div class="filter__content">
+      <div class="filter__list">
+        <h2 class="filter__title">Sort by: </h2>
+        <span class="filter__option--item filter__option--airing">Airing</span>
+        <span class="filter__option--item filter__option--popularity filter__option--active">Popularity</span>
+        <span class="filter__option--item filter__option--rating">Rating</span>
+        <span class="filter__option--item filter__option--title">Title</span>
+        <span class="filter__option--item filter__option--source">Source</span>
+        <span class="filter__option--item filter__option--studio">Studio</span>
+      </div>
+    </div>
   </div>
+  
+  <div class="main">
+    <div class="main__wrapper">
+      <div id="list" class="list"></div>
+    </div>
+    <div class="main__background"></div>
+  </div>
+
+  <div class="footer">
+    <div class="footer__content">
+      <div class="footer__disclaimer">
+        <p>Design & Code by Jonny Tran, built with Javascript using <a href="https://github.com/AniList/ApiV2-GraphQL-Docs" class="footer__link">AniList API</a>. Icons provided by <a href="https://fontawesome.com/" class="footer__link">Font Awesome</<a>.</p>
+      </div>
+    </div>
+  </div>
+
   <script src="js/app.js"></script>
 </body>
 </html>

@@ -29,6 +29,7 @@ $white: #ffffff;
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 h1, h2, h3, h4, h5, h6, p, a, span {
@@ -41,29 +42,40 @@ body {
   flex-direction: column;
   justify-content: center;
   min-height: 100%;
-  background-color: $mainDark;
+  background-color: #41454d;
   font-family: 'Overpass', sans-serif;
   overflow-y: scroll;
   overflow-x: hidden;
 }
 
-.wrapper {
-  box-sizing: border-box;
-  padding: 150px 50px 100px 50px;
-  width: 1500px;
+.main {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  .main__wrapper {
+    position: relative;
+    top: -70px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 0 50px;
+    width: 1500px;
+  }
+  .main__background {
+    position: absolute;
+    bottom: 0;
+    height: 140px;
+    width: 100%;
+    background-color: $mainDark;
+  }
 }
 
-//==================== HEADER SECTION ====================//
-.header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 300px;
+//==================== NAVBAR SECTION ====================//
+.navbar {
   width: 100%;
   background-color: $mainDarkest;
-  .navbar {
+  .navbar__list { // Navbar section
     width: 100%;
-    padding: 65px 0;
+    padding: 60px 0;
     text-align: center;
     -webkit-touch-callout: none;
     -webkit-user-select: none; 
@@ -75,6 +87,41 @@ body {
       margin: 0 10px;
       color: rgba($white, 0.5);
       cursor: pointer;
+      &:hover {
+        color: rgba($white, 0.8);
+      }
+    }
+  }
+}
+
+//==================== FILTER SECTION ====================//
+.filter { 
+  width: 100%;
+  padding: 25px 0 95px 0;
+  background-color: $mainDark;
+  .filter__content { // Filter content section
+    position: relative;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 50px;
+    .filter__title {
+      display: inline;
+    }
+    .filter__list { // Filter option section
+      color: rgba($white, 0.5);
+      float: right;
+      .filter__option--active {
+        color: $blue !important; 
+        text-decoration: none !important;
+      }
+      .filter__option--item {
+        margin-left: 10px;
+        text-decoration: line-through;
+        cursor: pointer;
+        &:hover {
+          color: rgba($white, 0.8);
+        }
+      }
     }
   }
 }
@@ -91,163 +138,149 @@ body {
     grid-template-columns: 180px auto;
     height: 275px;
     background-color: $main;
-    box-shadow: 0 0 25px -15px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 25px -10px #000;
+    &:hover {
+      box-shadow: 0 0 25px -5px #000;
+    }
   }
   .item--expand { // Expand item option
     grid-template-columns: 50px auto;
   }
-}
-
-// Thumbnail
-.item__thumbnail {
-  display: block;
-  position: relative;
-  overflow: hidden;
-  .item__title {
-    z-index: 10;
-    position: absolute;
-    bottom: 0;
-    display: grid;
-    align-items: center;
-    box-sizing: border-box;
-    min-height: 35px;
-    width: 100%;
-    padding: 10px;
-    background-color: rgba(32, 34, 37, 0.9);
-    color: $white;
-    font-size: 0.8em;
-    font-weight: 100;
-  }
-  .item__title--expand { // Expand item option
-    display: none;
-  }
-  .item__cover {
-    position: absolute;
-    width: 180px;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
-  .item__cover--expand { // Expand item option
-    height: 100%;
-    width: 180px;
-  }
-}
-
-// About
-.item__about {
-  position: relative;
-  // Header
-  .item__header {
-    display: grid;
-    align-items: center;
-    grid-template-columns: 70% 30%;
-    height: 70px;
-    padding: 0 15px;
-    background-color: $mainDark;
-    .item__episode--number {
-      color: $blue;
-    }
-    // Airing
-    .item__airing {
-      .item__episode {
-        display: block;
-        color: rgba($white, 0.5);
-        font-size: 0.8em;
-      }
-      .item__countdown {
-        display: block;
-        color: $white;
-      }
-    }
-    // Rating 
-    .item__rating {
-      justify-self: end;
-      color: $white;
-      font-size: 0.9em;
-      .item__averagescore {
-        display: block;
-      }
-      .item__averagescore--icon {
-        color: #f1c40f;
-      }
-      .item__popularity--icon {
-        color: #e74c3c;
-      }
-    }
-  }
-  
-  // Information
-  .item__information {
+  .item__thumbnail { // Thumbnail section
     display: block;
-    color: rgba($white, 0.5);
-    height: 140px;
-    padding: 0 15px;
-    margin: 15px 0;
-    font-size: 0.8em;
-    line-height: 1.5em;
-    overflow-y: scroll;
-    scrollbar-color: $main $main; // Firefox compatibility
-    scrollbar-width: thin; // Firefox compatibility
-    &:hover { // Firefox compatibility
-      scrollbar-color: $mainDarkest $main;
-    }
-    &:hover::-webkit-scrollbar-thumb {
-      background-color: $mainDarkest;
-    }
-    &::-webkit-scrollbar {
-      width: 6px;
-    }
-    &::-webkit-scrollbar-thumb {
-      background-color: $main;
-    }
-    .item__studio {
-      display: block;
-      color: $blue;
-    }
-    .item__source {
-      display: block;
-      margin-bottom: 10px;
-      color: rgba($white, 0.8);
-    }
-  }
-  
-  // Footer
-  .item__footer {
     position: relative;
-    display: grid;
-    align-items: center;
-    width: 100%;
-    height: 35px;
-    background-color: $mainDarkest;
-    text-align: center;
-    .item__genre {
-      color: $blue;
-      font-size: 0.7em;
-    }
-    .item__expand {
+    overflow: hidden;
+    .item__title {
+      z-index: 10;
       position: absolute;
       bottom: 0;
-      right: 0;
       display: grid;
       align-items: center;
-      height: 35px;
-      width: 35px;
-      text-align: center;
-      color: rgba($white, 0.8);
-      &:hover {
+      box-sizing: border-box;
+      min-height: 35px;
+      width: 180px;
+      padding: 10px;
+      background-color: rgba(32, 34, 37, 0.9);
+      color: $white;
+      font-size: 0.8em;
+      font-weight: 100;
+    }
+    .item__cover {
+      position: absolute;
+      width: 180px;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+  .item__about { // About section
+    position: relative;
+    .item__header { // Header
+      display: grid;
+      align-items: center;
+      grid-template-columns: 70% 30%;
+      height: 70px;
+      padding: 0 15px;
+      background-color: $mainDark;
+      .item__episode--number {
+        color: $blue;
+      }
+      .item__airing { // Airing
+        .item__episode {
+          display: block;
+          color: rgba($white, 0.5);
+          font-size: 0.8em;
+        }
+        .item__countdown {
+          display: block;
+          color: $white;
+        }
+      }
+      .item__rating { // Rating 
+        justify-self: end;
         color: $white;
-        cursor: pointer;
+        font-size: 0.9em;
+        .item__averagescore {
+          display: block;
+        }
+        .item__averagescore--icon {
+          color: #f1c40f;
+        }
+        .item__popularity--icon {
+          color: #e74c3c;
+        }
       }
     }
-    .item__expand--active { // Expand item option
-      color: $blue;
-      &:hover {
-        color: $blueHover;
+    .item__information { // Information section
+      display: block;
+      color: rgba($white, 0.5);
+      height: 140px;
+      padding: 0 15px;
+      margin: 15px 0;
+      font-size: 0.8em;
+      line-height: 1.5em;
+      overflow-y: scroll;
+      scrollbar-color: $main $main; // Firefox compatibility
+      scrollbar-width: thin; // Firefox compatibility
+      &:hover { // Firefox compatibility
+        scrollbar-color: $mainDarkest $main;
+      }
+      &:hover::-webkit-scrollbar-thumb {
+        background-color: $mainDarkest;
+      }
+      &::-webkit-scrollbar {
+        width: 6px;
+      }
+      &::-webkit-scrollbar-thumb {
+        background-color: $main;
+      }
+      .item__studio {
+        display: block;
+        color: $blue;
+      }
+      .item__source {
+        display: block;
+        margin-bottom: 10px;
+        color: rgba($white, 0.8);
+      }
+    }
+    .item__footer { // Footer section
+      position: relative;
+      display: grid;
+      align-items: center;
+      width: 100%;
+      height: 35px;
+      background-color: $mainDarkest;
+      text-align: center;
+      .item__genre {
+        color: $blue;
+        font-size: 0.7em;
+      }
+      .item__expand {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        display: grid;
+        align-items: center;
+        height: 35px;
+        width: 35px;
+        text-align: center;
+        color: rgba($white, 0.8);
+        &:hover {
+          color: $white;
+          cursor: pointer;
+        }
+      }
+      .item__expand--active { // Expand item option
+        color: $blue;
+        &:hover {
+          color: $blueHover;
+        }
       }
     }
   }
 }
+
 
 //==================== SKELETON SCREEN SECTION ====================//
 .item--skeleton {
@@ -259,7 +292,7 @@ body {
   background-color: $main;
   box-shadow: 0 0 25px -15px rgba(0, 0, 0, 0.8);
   overflow: hidden;
-  .item__thumbnail--skeleton {
+  .item__thumbnail--skeleton { // Skeleton thumbnail section
     position: relative;
     background-color: rgba($white, 0.05);
     .item__title--skeleton {
@@ -270,7 +303,7 @@ body {
       background-color: $mainDark;
     }
   }
-  .item__about--skeleton {
+  .item__about--skeleton { // Skeleton about section
     .item__header--skeleton {
       display: block;
       height: 70px;
@@ -302,37 +335,121 @@ body {
   }
 }
 
+//==================== FOOOTER SECTION ====================//
+.footer {
+  position: relative;
+  width: 100%;
+  background-color: $mainDarkest;
+  font-size: 0.8em;
+  .footer__content { // Footer content section
+    width: 1500px;
+    padding: 62px 50px;
+    margin: 0 auto;
+    color: rgba($white, 0.3);
+    .footer__disclaimer {
+      width: 100%;
+    }
+    .footer__link {
+      color: #72abda;
+      text-decoration: none;
+      &:hover {
+        color: #8acaff;
+      }
+    }
+  }
+  .footer__background {
+    z-index: -10;
+    position: absolute;
+    bottom: 0;
+    display: block;
+    height: 280px;
+    width: 100%;
+    background-color: $mainDark;
+  }
+}
+
 //==================== MEDIA SECTION ====================//
 @media (max-width: 1500px){
-  .wrapper {
-    width: 100%;
-    max-width: 1200px;
+  .main {
+    .main__wrapper {
+      width: 100%;
+      max-width: 1200px;
+    }
   }
+  // FILTER SECTION
+  .filter {
+    width: 100%;
+    .filter__content {
+      max-width: 1200px;
+      padding: 0 50px;
+    }
+  }
+  // ANIME LIST SECTION
   .list {
     grid-template-columns: repeat(2, 1fr);
+  }
+  // FOOTER SECTION
+  .footer {
+    .footer__content {
+      max-width: 1200px;
+    }
   }
 }
 
 @media (max-width: 1000px){
+  // FILTER SECTION {
+  .filter {
+    .filter__content {
+      .filter__list {
+        text-align: center;
+        float: none;
+      }
+    }
+  }
+  // ANIME LIST SECTION
   .list {
     grid-template-columns: 1fr;
+  }
+  // FOOTER SECTION
+  .footer {
+    .footer__content {
+      width: 100%;
+      padding: 62px 0;
+      .footer__disclaimer {
+        width: 100%;
+        text-align: center;
+      }
+    }
   }
 }
 
 @media (max-width: 768px) {
-  .wrapper {
-    width: 100%;
-    padding: 100px 10px;
-  }
-  .header {
-    .navbar {
-      padding: 40px 0;
+  .main {
+    .main__wrapper {
+      width: 100%;
+      padding: 0 10px;
     }
   }
+  // FILTER SECTION {
+  .filter {
+    .filter__content {
+      padding: 0 10px;
+      .filter__list {
+        text-align: center;
+        float: none;
+      }
+    }
+  }
+  // ANIME LIST SECTION
   .list {
     grid-template-columns: 1fr;
     .item {
       grid-template-columns: 150px auto;
+      .item__thumbnail {
+        .item__title {
+          width: 150px;
+        }
+      }
     }
     .item--expand { // Expand item option
       grid-template-columns: 50px auto;
@@ -343,5 +460,16 @@ body {
   }
   .item--skeleton {
     grid-template-columns: 150px auto;
+  }
+  // NAVBAR SECTION
+  .footer {
+    .footer__content {
+      width: 100%;
+      .footer__disclaimer {
+        width: 100%;
+        padding: 0 10px;
+        text-align: center;
+      }
+    }
   }
 }

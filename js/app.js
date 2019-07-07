@@ -112,23 +112,22 @@ function setNavbarItem() {
 
 // Display skeleton screen
 function displaySkeleton() {
-  var test = `
-  <div class="item--skeleton">
-    <div class="item__thumbnail--skeleton">
-      <span class="item__title--skeleton"></span>
-    </div>
-    <div class="item__about--skeleton">
-      <span class="item__header--skeleton"></span>
-      <span class="item__text--skeleton"></span>
-      <span class="item__textarea--skeleton"></span>   
-      <span class="item__textarea--skeleton"></span>   
-      <span class="item__textarea--skeleton"></span>   
-      <span class="item__footer--skeleton"></span> 
-    </div>
-  </div>
-  `
   for (let i = 0; i < 9; i++){
-    document.getElementById('list').innerHTML += test;
+    document.getElementById('list').innerHTML += `
+      <div class="item--skeleton">
+        <div class="item__thumbnail--skeleton">
+          <span class="item__title--skeleton"></span>
+        </div>
+        <div class="item__about--skeleton">
+          <span class="item__header--skeleton"></span>
+          <span class="item__text--skeleton"></span>
+          <span class="item__textarea--skeleton"></span>   
+          <span class="item__textarea--skeleton"></span>   
+          <span class="item__textarea--skeleton"></span>   
+          <span class="item__footer--skeleton"></span> 
+        </div>
+      </div>
+    `
   }
 }
 
@@ -323,8 +322,6 @@ function expandItem() {
       // Toggle between classes to expand item information
       itemExpand[i].classList.toggle('item__expand--active');
       document.querySelectorAll('.item')[i].classList.toggle('item--expand');
-      document.querySelectorAll('.item__cover')[i].classList.toggle('item__cover--expand');
-      document.querySelectorAll('.item__title')[i].classList.toggle('item__title--expand');
     })
   }
 }
