@@ -175,3 +175,36 @@ function data(data) {
     }
   }
 }
+
+// Fetches github API
+fetch('https://api.github.com/repos/trnjonny/animelist/commits')
+  .then(response => {
+    return response.json();
+  })
+  .then(data => {
+    // Store commits into variable
+    let commits = `<i class="fas fa-history"></i> ${data.length} Commit`;
+
+    // Change text content of commits
+    if (data.length > 1) {
+      commits += 's';
+    }
+    // Print number of  commits 
+    document.querySelector('.footer__github--commits').innerHTML = commits;
+
+    return fetch('https://api.github.com/repos/trnjonny/animelist')
+  })
+  .then(function(response) {
+    return response.json();
+  })
+  .then(data => {
+    // Store stargazer into variable
+    let stargazer = `<i class="far fa-star"></i> ${data.watchers} Stargazer`;
+
+    // Change text content of stargazers
+    if (data.watchers > 1) {
+      stargazer += 's';
+    }
+    // Print number of stargazers
+    document.querySelector('.footer__github--watchers').innerHTML = stargazer;
+  })

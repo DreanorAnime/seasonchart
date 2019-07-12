@@ -342,18 +342,31 @@ body {
   background-color: $mainDarkest;
   font-size: 0.8em;
   .footer__content { // Footer content section
+    display: grid;
+    grid-template-columns: 4fr 1fr;
     width: 1500px;
     padding: 62px 50px;
     margin: 0 auto;
     color: rgba($white, 0.3);
     .footer__disclaimer {
-      width: 100%;
+      display: inline;
     }
     .footer__link {
       color: #72abda;
       text-decoration: none;
       &:hover {
         color: #8acaff;
+      }
+    }
+    .footer__link--github {
+      justify-self: end;
+      color: rgba($white, 0.3);
+      text-decoration: none;
+      &:hover {
+        color: $blue;
+      }
+      .footer__github--item {
+        margin-left: 5px;
       }
     }
   }
@@ -391,6 +404,7 @@ body {
   // FOOTER SECTION
   .footer {
     .footer__content {
+      width: 100%;
       max-width: 1200px;
     }
   }
@@ -413,11 +427,16 @@ body {
   // FOOTER SECTION
   .footer {
     .footer__content {
+      grid-template-columns: 1fr;
       width: 100%;
       padding: 62px 0;
       .footer__disclaimer {
         width: 100%;
         text-align: center;
+      }
+      .footer__link--github {
+        justify-self: center;
+        margin-top: 10px;
       }
     }
   }
