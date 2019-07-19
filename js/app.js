@@ -57,6 +57,7 @@ document.getElementById('fall').addEventListener('click', () =>{
 
 // Display anime list
 function data(data) {
+  console.log(data.data.Page.media)
   document.getElementById('list').innerHTML = '';
   for (let i = 0; i < data.data.Page.media.length; i++){
     const media = data.data.Page.media;
@@ -130,17 +131,23 @@ function data(data) {
 
     // Check if score is available
     if (media[i].averageScore){
-      averageScore = `<i class="far fa-star item__averagescore--icon"></i> ${(media[i].averageScore / 10).toFixed(1)}`;
+      var averageScore = `<i class="far fa-star item__averagescore--icon"></i> ${(media[i].averageScore / 10).toFixed(1)}`;
     } else {
-      averageScore = '';
+      var averageScore = '';
     }
 
+    if (media[i].siteUrl){
+      var anilistUrl = media[i].siteUrl;
+    } else {
+      var anilistUrl = '';
+    }
     // Print anime list
     document.getElementById('list').innerHTML += `
       <div class="item">
-        <div class="item__thumbnail">
+        <div href="${anilistUrl}" class="item__thumbnail">
           <img src="${media[i].coverImage.large}" class="item__cover">
           <h2 class="item__title">${media[i].title.romaji}</h2>
+          <a href="${anilistUrl}" class="item__link" target="_blank"><i class="fas fa-arrow-circle-right"></i></a>
         </div>
         <div class="item__about">
           <div class="item__header">

@@ -31,6 +31,7 @@ const query = `
         }
         popularity
         season
+        siteUrl
         source
         startDate {
           year

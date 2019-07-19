@@ -150,6 +150,25 @@ body {
     display: block;
     position: relative;
     overflow: hidden;
+    &:hover .item__link {
+      opacity: 1;
+    }
+    .item__link {
+      z-index: 5;
+      position: absolute;
+      display: grid;
+      height: 100%;
+      width: 100%;
+      color: $white;
+      background-color: rgba($blue, 0.90);
+      font-size: 3em;
+      text-decoration: none;
+      opacity: 0;
+      .fas {
+        align-self: center;
+        justify-self: center;
+      }
+    }
     .item__title {
       z-index: 10;
       position: absolute;
