@@ -1,3 +1,6 @@
+// Insert date to variable
+const date = new Date();
+
 // Insert URL to variable
 const url = 'https://graphql.anilist.co';
 
@@ -13,7 +16,7 @@ function option(season) {
       query: query,
       variables: {
         "page": 1,
-        "seasonYear": 2019,
+        "seasonYear": date.getFullYear(),
         "season": season
       }
     })

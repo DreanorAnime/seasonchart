@@ -2,18 +2,11 @@
 @import url('https://fonts.googleapis.com/css?family=Overpass&display=swap');
 
 //==================== MIXINS ==================== //
-@mixin transitions {
-  -webkit-transition: all 0.1s;
-  -moz-transition: all 0.1s;
-  -o-transition: all 0.1s;
-  transition: all 0.1s;
-}
-
-@mixin transitions--1 {
-  -webkit-transition: all 1s;
-  -moz-transition: all 1s;
-  -o-transition: all 1s;
-  transition: all 1s;
+@mixin transitions($duration) {
+  -webkit-transition: all $duration;
+  -moz-transition: all $duration;
+  -o-transition: all $duration;
+  transition: all $duration;
 }
 
 //==================== MIXINS ==================== //
@@ -87,6 +80,7 @@ body {
       margin: 0 10px;
       color: rgba($white, 0.5);
       cursor: pointer;
+      @include transitions(0.1s);
       &:hover {
         color: rgba($white, 0.8);
       }
@@ -118,6 +112,7 @@ body {
         margin-left: 10px;
         text-decoration: line-through;
         cursor: pointer;
+        @include transitions(0.1s);
         &:hover {
           color: rgba($white, 0.8);
         }
@@ -139,12 +134,14 @@ body {
     height: 275px;
     background-color: $main;
     box-shadow: 0 0 25px -10px #000;
+    @include transitions(0.1s);
     &:hover {
       box-shadow: 0 0 25px -5px #000;
     }
   }
   .item--expand { // Expand item option
     grid-template-columns: 50px auto;
+    @include transitions(0.1s);
   }
   .item__thumbnail { // Thumbnail section
     display: block;
@@ -164,6 +161,7 @@ body {
       font-size: 3em;
       text-decoration: none;
       opacity: 0;
+      @include transitions(0.1s);
       .fas {
         align-self: center;
         justify-self: center;
@@ -271,6 +269,7 @@ body {
       height: 35px;
       background-color: $mainDarkest;
       text-align: center;
+      @include transitions(0.1s);
       .item__genre {
         color: $blue;
         font-size: 0.7em;
@@ -285,6 +284,7 @@ body {
         width: 35px;
         text-align: center;
         color: rgba($white, 0.8);
+        @include transitions(0.1s);
         &:hover {
           color: $white;
           cursor: pointer;
@@ -299,7 +299,6 @@ body {
     }
   }
 }
-
 
 //==================== SKELETON SCREEN SECTION ====================//
 .item--skeleton {
@@ -371,16 +370,18 @@ body {
       display: inline;
     }
     .footer__link {
-      color: #72abda;
+      color: $blue;
       text-decoration: none;
+      @include transitions(0.1s);
       &:hover {
-        color: #8acaff;
+        color: $blueHover;
       }
     }
     .footer__link--github {
       justify-self: end;
       color: rgba($white, 0.3);
       text-decoration: none;
+      @include transitions(0.1s);
       &:hover {
         color: $blue;
       }
