@@ -1,5 +1,5 @@
 const query = `
-  query ($page: Int, $seasonYear: Int, $season: MediaSeason){
+  query ($page: Int, $seasonYear: Int, $season: MediaSeason, $sort: [MediaSort]){
     Page(page:$page){
       pageInfo {
         total
@@ -8,7 +8,7 @@ const query = `
         lastPage
         hasNextPage
       }
-      media(seasonYear: $seasonYear, season: $season, format: TV, sort: POPULARITY_DESC) {
+      media(seasonYear: $seasonYear, season: $season, format: TV, sort: $sort) {
         id
         averageScore
         coverImage {

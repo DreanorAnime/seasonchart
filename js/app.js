@@ -17,7 +17,8 @@ function option(season) {
       variables: {
         "page": 1,
         "seasonYear": date.getFullYear(),
-        "season": season
+        "season": season,
+        "sort": 'POPULARITY_DESC',
       }
     })
   }
@@ -56,6 +57,57 @@ document.getElementById('summer').addEventListener('click', () =>{
 })
 document.getElementById('fall').addEventListener('click', () =>{
   displaySeason('fall', 'FALL')
+})
+
+// Set options to filter
+function setFilter(season, sort) {
+  return options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    },
+    body: JSON.stringify({
+      query: query,
+      variables: {
+        "page": 1,
+        "seasonYear": date.getFullYear(),
+        "season": season,
+        "sort": sort,
+      }
+    })
+  }
+}
+
+// Display filter
+function displayFilter(sort) {
+  setFilterItem();
+  document.getElementById('list').innerHTML = '';
+  displaySkeleton()
+
+  // Fetches anilist API
+  fetch(url, setFilter(season(), sort))
+    .then(response => {
+      return response.json();
+    })
+    .then(data)
+}
+
+document.getElementById('airing').addEventListener('click', () =>{
+  displayFilter('START_DATE')
+  document.getElementById('airing').style.color = '#9b59b6';
+})
+document.getElementById('popularity').addEventListener('click', () =>{
+  displayFilter('POPULARITY_DESC')
+  document.getElementById('popularity').style.color = '#e74c3c';
+})
+document.getElementById('rating').addEventListener('click', () =>{
+  displayFilter('SCORE_DESC')
+  document.getElementById('rating').style.color = '#f1c40f';
+})
+document.getElementById('title').addEventListener('click', () =>{
+  displayFilter('TITLE_ROMAJI')
+  document.getElementById('title').style.color = '#72abda';
 })
 
 // Display anime list
@@ -139,6 +191,15 @@ function data(data) {
       var averageScore = '';
     }
 
+    // Check if popularity is available
+    if (media[i].popularity){
+      var popularity = `<i class="far fa-heart item__popularity--icon"></i> ${media[i].popularity}`;
+      
+    } else {
+      var popularity = '';
+    }
+
+    // Check if genre is available
     if (media[i].siteUrl){
       var anilistUrl = media[i].siteUrl;
     } else {
@@ -159,7 +220,7 @@ function data(data) {
               <span class="item__countdown">${countdown}</span>
             </div>
             <div class="item__rating">
-              <span class="item__popularity"><i class="far fa-heart item__popularity--icon"></i> #${i+1}</span>
+              <span class="item__popularity">${popularity}</span>
               <span class="item__averagescore"> ${averageScore}</span>
             </div>
           </div>

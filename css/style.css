@@ -58,7 +58,7 @@ body {
       -o-transition: all 0.1s;
       transition: all 0.1s; }
       .navbar .navbar__list .navbar__item:hover {
-        color: rgba(255, 255, 255, 0.8); }
+        color: rgba(255, 255, 255, 0.8) !important; }
 
 .filter {
   width: 100%;
@@ -74,19 +74,23 @@ body {
     .filter .filter__content .filter__list {
       color: rgba(255, 255, 255, 0.5);
       float: right; }
-      .filter .filter__content .filter__list .filter__option--active {
-        color: #72abda !important;
-        text-decoration: none !important; }
+      .filter .filter__content .filter__list #airing:hover {
+        color: #9b59b6 !important; }
+      .filter .filter__content .filter__list #popularity {
+        color: #e74c3c; }
+        .filter .filter__content .filter__list #popularity:hover {
+          color: #e74c3c !important; }
+      .filter .filter__content .filter__list #rating:hover {
+        color: #f1c40f !important; }
+      .filter .filter__content .filter__list #title:hover {
+        color: #72abda !important; }
       .filter .filter__content .filter__list .filter__option--item {
         margin-left: 10px;
-        text-decoration: line-through;
         cursor: pointer;
         -webkit-transition: all 0.1s;
         -moz-transition: all 0.1s;
         -o-transition: all 0.1s;
         transition: all 0.1s; }
-        .filter .filter__content .filter__list .filter__option--item:hover {
-          color: rgba(255, 255, 255, 0.8); }
 
 .list {
   display: grid;

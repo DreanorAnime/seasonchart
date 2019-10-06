@@ -24,6 +24,22 @@ function setNavbarItem() {
   for (let i = 0; i < navbarItem.length; i++){
     navbarItem[i].style.color = 'rgba(255, 255, 255, 0.5)'
   }
+  // Return default sort item
+  setFilterItem();
+  document.getElementById('popularity').style.color = '#e74c3c'
+}
+
+// Return default sort item when not active
+function setFilterItem() {
+  const filterItem = document.querySelectorAll('.filter__option--item');
+  for (let i = 0; i < filterItem.length; i++){
+    filterItem[i].style.color = 'rgba(255, 255, 255, 0.5)'
+  }
+  // Return default navbar item
+  const navbarItem = document.querySelectorAll('.navbar__item');
+  for (let i = 0; i < navbarItem.length; i++){
+    navbarItem[i].style.color = 'rgba(255, 255, 255, 0.5)'
+  }
 }
 
 // Display skeleton screen

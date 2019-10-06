@@ -82,7 +82,7 @@ body {
       cursor: pointer;
       @include transitions(0.1s);
       &:hover {
-        color: rgba($white, 0.8);
+        color: rgba($white, 0.8) !important;
       }
     }
   }
@@ -104,18 +104,31 @@ body {
     .filter__list { // Filter option section
       color: rgba($white, 0.5);
       float: right;
-      .filter__option--active {
-        color: $blue !important; 
-        text-decoration: none !important;
+      #airing {
+        &:hover {
+          color: #9b59b6 !important;
+        }
+      }
+      #popularity {
+        color: #e74c3c;
+        &:hover {
+          color: #e74c3c !important;
+        }
+      }
+      #rating {
+        &:hover {
+          color: #f1c40f !important;
+        }
+      }
+      #title {
+        &:hover {
+          color: $blue !important;
+        }
       }
       .filter__option--item {
         margin-left: 10px;
-        text-decoration: line-through;
         cursor: pointer;
         @include transitions(0.1s);
-        &:hover {
-          color: rgba($white, 0.8);
-        }
       }
     }
   }
