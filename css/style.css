@@ -13,7 +13,7 @@ body {
   flex-direction: column;
   justify-content: center;
   min-height: 100%;
-  background-color: #41454d;
+  background-color: #121212;
   font-family: 'Overpass', sans-serif;
   overflow-y: scroll;
   overflow-x: hidden; }
@@ -34,11 +34,11 @@ body {
     bottom: 0;
     height: 140px;
     width: 100%;
-    background-color: #2F3136; }
+    background-color: #212121; }
 
 .navbar {
   width: 100%;
-  background-color: #202225; }
+  background-color: #121212; }
   .navbar .navbar__list {
     width: 100%;
     padding: 60px 0;
@@ -63,7 +63,7 @@ body {
 .filter {
   width: 100%;
   padding: 25px 0 95px 0;
-  background-color: #2F3136; }
+  background-color: #212121; }
   .filter .filter__content {
     position: relative;
     max-width: 1500px;
@@ -99,11 +99,13 @@ body {
   width: auto; }
   .list .item {
     z-index: 10;
+    border-radius: 5px;
     display: grid;
     grid-template-columns: 180px auto;
     height: 275px;
-    background-color: #36393F;
+    background-color: #2c2c2c;
     box-shadow: 0 0 25px -10px #000;
+    overflow: hidden;
     -webkit-transition: all 0.1s;
     -moz-transition: all 0.1s;
     -o-transition: all 0.1s;
@@ -168,7 +170,7 @@ body {
       grid-template-columns: 70% 30%;
       height: 70px;
       padding: 0 15px;
-      background-color: #2F3136; }
+      background-color: #3f3f3f; }
       .list .item__about .item__header .item__episode--number {
         color: #72abda; }
       .list .item__about .item__header .item__airing .item__episode {
@@ -197,16 +199,16 @@ body {
       font-size: 0.8em;
       line-height: 1.5em;
       overflow-y: scroll;
-      scrollbar-color: #36393F #36393F;
+      scrollbar-color: #2c2c2c #2c2c2c;
       scrollbar-width: thin; }
       .list .item__about .item__information:hover {
-        scrollbar-color: #202225 #36393F; }
+        scrollbar-color: #121212 #2c2c2c; }
       .list .item__about .item__information:hover::-webkit-scrollbar-thumb {
-        background-color: #202225; }
+        background-color: #121212; }
       .list .item__about .item__information::-webkit-scrollbar {
         width: 6px; }
       .list .item__about .item__information::-webkit-scrollbar-thumb {
-        background-color: #36393F; }
+        background-color: #2c2c2c; }
       .list .item__about .item__information .item__studio {
         display: block;
         color: #72abda; }
@@ -220,7 +222,7 @@ body {
       align-items: center;
       width: 100%;
       height: 35px;
-      background-color: #202225;
+      background-color: #212121;
       text-align: center;
       -webkit-transition: all 0.1s;
       -moz-transition: all 0.1s;
@@ -254,10 +256,11 @@ body {
 .item--skeleton {
   position: relative;
   z-index: 10;
+  border-radius: 5px;
   display: grid;
   grid-template-columns: 180px auto;
   height: 275px;
-  background-color: #36393F;
+  background-color: #2c2c2c;
   box-shadow: 0 0 25px -15px rgba(0, 0, 0, 0.8);
   overflow: hidden; }
   .item--skeleton .item__thumbnail--skeleton {
@@ -268,16 +271,16 @@ body {
       bottom: 0;
       height: 35px;
       width: 100%;
-      background-color: #2F3136; }
+      background-color: #212121; }
   .item--skeleton .item__about--skeleton .item__header--skeleton {
     display: block;
     height: 70px;
     width: 100%;
-    background-color: #2F3136; }
+    background-color: #3f3f3f; }
   .item--skeleton .item__about--skeleton .item__text--skeleton, .item--skeleton .item__about--skeleton .item__textarea--skeleton {
     display: block;
     height: 15px;
-    background-color: #2F3136; }
+    background-color: #212121; }
   .item--skeleton .item__about--skeleton .item__text--skeleton {
     height: 30px;
     width: 30%;
@@ -289,14 +292,14 @@ body {
     position: absolute;
     bottom: 0;
     display: block;
-    background-color: #202225;
+    background-color: #212121;
     height: 35px;
     width: 100%; }
 
 .footer {
   position: relative;
   width: 100%;
-  background-color: #202225;
+  background-color: #121212;
   font-size: 0.8em; }
   .footer .footer__content {
     display: grid;
@@ -335,7 +338,7 @@ body {
     display: block;
     height: 280px;
     width: 100%;
-    background-color: #2F3136; }
+    background-color: #212121; }
 
 @media (max-width: 1500px) {
   .main .main__wrapper {
