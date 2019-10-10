@@ -143,17 +143,13 @@ body {
   width: auto;
   .item {
     z-index: 10;
-    border-radius: 5px;
+    border-radius: 10px;
     display: grid;
     grid-template-columns: 180px auto;
     height: 275px;
     background-color: $main;
     box-shadow: 0 0 25px -10px #000;
-    overflow: hidden;
     @include transitions(0.1s);
-    &:hover {
-      box-shadow: 0 0 25px -5px #000;
-    }
   }
   .item--expand { // Expand item option
     grid-template-columns: 50px auto;
@@ -162,6 +158,7 @@ body {
   .item__thumbnail { // Thumbnail section
     display: block;
     position: relative;
+    border-radius: 5px 0 0 5px;
     overflow: hidden;
     &:hover .item__link {
       opacity: 1;
@@ -209,6 +206,7 @@ body {
   .item__about { // About section
     position: relative;
     .item__header { // Header
+      border-radius: 0 5px 0 0;
       display: grid;
       align-items: center;
       grid-template-columns: 70% 30%;
@@ -279,6 +277,7 @@ body {
     }
     .item__footer { // Footer section
       position: relative;
+      border-radius: 0 0 5px 0;
       display: grid;
       align-items: center;
       width: 100%;
