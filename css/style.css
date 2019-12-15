@@ -38,11 +38,11 @@ body {
 
 .navbar {
   width: 100%;
-  background-color: #121212; }
+  padding: 50px 0;
+  background-color: #121212;
+  text-align: center; }
   .navbar .navbar__list {
-    width: 100%;
-    padding: 60px 0;
-    text-align: center;
+    padding: 10px 0;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -50,7 +50,7 @@ body {
     -ms-user-select: none;
     user-select: none; }
     .navbar .navbar__list .navbar__item {
-      margin: 0 10px;
+      margin-left: 10px;
       color: rgba(255, 255, 255, 0.5);
       cursor: pointer;
       -webkit-transition: all 0.1s;
@@ -59,6 +59,17 @@ body {
       transition: all 0.1s; }
       .navbar .navbar__list .navbar__item:hover {
         color: rgba(255, 255, 255, 0.8) !important; }
+      .navbar .navbar__list .navbar__item:first-child {
+        margin-left: 0; }
+
+#currentSeason {
+  display: inline-block; }
+
+#nextSeason {
+  display: none;
+  border-left: 1px solid rgba(255, 255, 255, 0.5);
+  margin-left: 15px !important;
+  padding-left: 15px !important; }
 
 .filter {
   width: 100%;
@@ -379,6 +390,15 @@ body {
   .main .main__wrapper {
     width: 100%;
     padding: 0 10px; }
+
+  .navbar .navbar__list {
+    display: block; }
+  .navbar #currentSeason {
+    display: block; }
+  .navbar #nextSeason {
+    border-left: none;
+    margin-left: 0 !important;
+    padding: 0 !important; }
 
   .filter .filter__content {
     padding: 0 10px; }

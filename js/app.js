@@ -5,7 +5,7 @@ const date = new Date();
 const url = 'https://graphql.anilist.co';
 
 // Insert options to function
-function option(season) {
+function option(season, year) {
   return options = {
     method: 'POST',
     headers: {
@@ -16,7 +16,7 @@ function option(season) {
       query: query,
       variables: {
         "page": 1,
-        "seasonYear": date.getFullYear(),
+        "seasonYear": date.getFullYear() + year,
         "season": season,
         "sort": 'POPULARITY_DESC',
       }
@@ -25,7 +25,7 @@ function option(season) {
 }
 
 // Fetches anilist API and display on load
-fetch(url, option(season()))
+fetch(url, option(season(), 0))
   .then(response => {
     return response.json();
   })
@@ -39,7 +39,22 @@ function displaySeason(season, SEASON) {
   displaySkeleton()
 
   // Fetches anilist API
-  fetch(url, option(SEASON))
+  fetch(url, option(SEASON, 0))
+    .then(response => {
+      return response.json();
+    })
+    .then(data)
+}
+
+// Display next season
+function displayNextSeason(season, SEASON) {
+  setNavbarItem();
+  document.getElementById(season).style.color = '#fff';
+  document.getElementById('list').innerHTML = '';
+  displaySkeleton()
+
+  // Fetches anilist API
+  fetch(url, option(SEASON, 1))
     .then(response => {
       return response.json();
     })
@@ -57,6 +72,13 @@ document.getElementById('summer').addEventListener('click', () =>{
 })
 document.getElementById('fall').addEventListener('click', () =>{
   displaySeason('fall', 'FALL')
+})
+
+document.getElementById('winterNext').addEventListener('click', () =>{
+  displayNextSeason('winterNext', 'WINTER')
+})
+document.getElementById('springNext').addEventListener('click', () =>{
+  displayNextSeason('springNext', 'SPRING')
 })
 
 // Set options to filter
@@ -112,7 +134,7 @@ document.getElementById('title').addEventListener('click', () =>{
 
 // Display anime list
 function data(data) {
-  console.log(data.data.Page.media)
+  // console.log(data.data.Page.media)
   document.getElementById('list').innerHTML = '';
   for (let i = 0; i < data.data.Page.media.length; i++){
     const media = data.data.Page.media;

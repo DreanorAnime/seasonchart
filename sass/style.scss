@@ -66,11 +66,11 @@ body {
 //==================== NAVBAR SECTION ====================//
 .navbar {
   width: 100%;
+  padding: 50px 0;
   background-color: $mainDarkest;
+  text-align: center;
   .navbar__list { // Navbar section
-    width: 100%;
-    padding: 60px 0;
-    text-align: center;
+    padding: 10px 0;
     -webkit-touch-callout: none;
     -webkit-user-select: none; 
      -khtml-user-select: none; 
@@ -78,15 +78,29 @@ body {
         -ms-user-select: none; 
             user-select: none;
     .navbar__item {
-      margin: 0 10px;
+      margin-left: 10px;
       color: rgba($white, 0.5);
       cursor: pointer;
       @include transitions(0.1s);
       &:hover {
         color: rgba($white, 0.8) !important;
       }
+      &:first-child {
+        margin-left: 0;
+      }
     }
   }
+}
+
+#currentSeason {
+  display: inline-block;
+}
+
+#nextSeason {
+  display: none;
+  border-left: 1px solid rgba($white, 0.5);
+  margin-left: 15px !important;
+  padding-left: 15px !important;
 }
 
 //==================== FILTER SECTION ====================//
@@ -485,7 +499,23 @@ body {
       padding: 0 10px;
     }
   }
-  // FILTER SECTION {
+
+  // NAVBAR
+  .navbar {
+    .navbar__list {
+      display: block;
+    }
+    #currentSeason {
+      display: block;
+    }
+    #nextSeason {
+      border-left: none;
+      margin-left: 0 !important;
+      padding: 0 !important;
+    }
+  }
+
+  // FILTER SECTION 
   .filter {
     .filter__content {
       padding: 0 10px;

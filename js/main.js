@@ -2,6 +2,11 @@
 function season() {
   const time = new Date();
   const month = time.getMonth();
+
+  if (month > 8) {
+    const nextSeason = document.getElementById('nextSeason');
+    nextSeason.style.display = "inline-block";
+  }
   
   if (month < 3) { // Display winter
     document.getElementById('winter').style.color = '#fff';
