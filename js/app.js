@@ -34,7 +34,20 @@ fetch(url, option(season(), 0))
 // Display season
 function displaySeason(season, SEASON) {
   setNavbarItem();
-  document.getElementById(season).style.color = '#fff';
+
+  // Set season color
+  let setColor = '';
+  if (season === 'winter') {
+    setColor = '#3498db';
+  } else if (season === 'spring') {
+    setColor = '#2ecc71';
+  } else if (season === 'summer') {
+    setColor = '#f1c40f';
+  } else {
+    setColor = '#e67e22';
+  }
+
+  document.getElementById(season).style.color = setColor;
   document.getElementById('list').innerHTML = '';
   displaySkeleton()
 
@@ -49,7 +62,16 @@ function displaySeason(season, SEASON) {
 // Display next season
 function displayNextSeason(season, SEASON) {
   setNavbarItem();
-  document.getElementById(season).style.color = '#fff';
+
+  // Set season color
+  let setColor = '';
+  if (season === 'winterNext') {
+    setColor = '#3498db';
+  } else {
+    setColor = '#2ecc71';
+  }
+
+  document.getElementById(season).style.color = setColor;
   document.getElementById('list').innerHTML = '';
   displaySkeleton()
 
@@ -152,7 +174,7 @@ function data(data) {
       const seconds = data.data.Page.media[i].nextAiringEpisode.timeUntilAiring;
       const minutes = Math.floor((seconds / 60) % 60);
       const hours = Math.floor((seconds / 3600) % 24);
-      const days = Math.floor(seconds / (3600 * 24) % 24); 
+      const days = Math.floor(seconds / (3600 * 24) % 365); 
 
       let remainingDay = `${days} day`;
       let remainingHour = `${hours} hour`;

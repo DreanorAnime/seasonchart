@@ -71,6 +71,18 @@ body {
   margin-left: 15px !important;
   padding-left: 15px !important; }
 
+#winter:hover, #winterNext:hover {
+  color: #3498db !important; }
+
+#spring:hover, #springNext:hover {
+  color: #2ecc71 !important; }
+
+#summer:hover {
+  color: #f1c40f !important; }
+
+#fall:hover {
+  color: #e67e22 !important; }
+
 .filter {
   width: 100%;
   padding: 25px 0 95px 0;

@@ -9,16 +9,16 @@ function season() {
   }
   
   if (month < 3) { // Display winter
-    document.getElementById('winter').style.color = '#fff';
+    document.getElementById('winter').style.color = '#3498db';
     return 'WINTER';
   } else if (month < 6) { // Display spring
-    document.getElementById('spring').style.color = '#fff';
+    document.getElementById('spring').style.color = '#2ecc71';
     return 'SPRING';
   } else if (month < 9) { // Display summer
-    document.getElementById('summer').style.color = '#fff';
+    document.getElementById('summer').style.color = '#f1c40f';
     return 'SUMMER';
   } else { // Display fall
-    document.getElementById('fall').style.color = '#fff';
+    document.getElementById('fall').style.color = '#e67e22';
     return 'FALL';
   }
 }
