@@ -141,6 +141,10 @@ document.getElementById('airing').addEventListener('click', () =>{
   displayFilter('START_DATE')
   document.getElementById('airing').style.color = '#9b59b6';
 })
+document.getElementById('enddate').addEventListener('click', () =>{
+  displayFilter('END_DATE')
+  document.getElementById('enddate').style.color = '#9b59b6';
+})
 document.getElementById('popularity').addEventListener('click', () =>{
   displayFilter('POPULARITY_DESC')
   document.getElementById('popularity').style.color = '#e74c3c';
@@ -156,20 +160,32 @@ document.getElementById('title').addEventListener('click', () =>{
 
 // Display anime list
 function data(data) {
-  // console.log(data.data.Page.media)
+var dict = {};
+var dictkey = 0;
+ //console.log(data)
   document.getElementById('list').innerHTML = '';
   for (let i = 0; i < data.data.Page.media.length; i++){
     const media = data.data.Page.media;
-    
+    var remainingEpisodes = 0
     // Check if next airing episode is available
     if (data.data.Page.media[i].nextAiringEpisode != null) {
       // Change text content if total episode is available
       if (media[i].episodes != null) {
         var episode = `Episode <span class="item__episode--number">${media[i].nextAiringEpisode.episode}</span> of <span class="item__episode--number">${media[i].episodes}</span> in`;
+			if(media[i].episodes - media[i].nextAiringEpisode.episode == 1){
+				var remainingEpisodes = ((media[i].episodes - media[i].nextAiringEpisode.episode)) * 7
+			}
+			if(media[i].episodes - media[i].nextAiringEpisode.episode == 0){
+				var remainingEpisodes = 0
+			}
+			if(media[i].episodes - media[i].nextAiringEpisode.episode > 1){
+				var remainingEpisodes = ((media[i].episodes - media[i].nextAiringEpisode.episode) -1) * 7
+			}
+
       } else {
         var episode = `Episode <span class="item__episode--number">${media[i].nextAiringEpisode.episode}</span> in`;
       }
-
+		  
       // Store time and date into variables
       const seconds = data.data.Page.media[i].nextAiringEpisode.timeUntilAiring;
       const minutes = Math.floor((seconds / 60) % 60);
@@ -180,33 +196,53 @@ function data(data) {
       let remainingHour = `${hours} hour`;
       let remainingMinute = `${minutes} min`;
 
+	  let remainingEndDate = `${days + remainingEpisodes} day`;
+	  if((days + remainingEpisodes) > 9) {
+		  dictkey = `${days + remainingEpisodes}_${media[i].title.romaji}`;
+	  }
+	  else{
+		  dictkey = `0${days + remainingEpisodes}_${media[i].title.romaji}`;
+	  }
+	
       // Change text content of days, hours and minutes
       if (days > 1) {
         remainingDay += 's';
       }
+	   if (days +remainingEpisodes > 1) {
+		remainingEndDate += 's';
+      }
+	  
       if (hours > 1) {
         remainingHour += 's';
       }
       if (minutes > 1) {
         remainingMinute += 's';
       }
-
+		
       // Display remaining time of item
       if (days > 0 && hours > 0){ //display day and hour
         var countdown = `${remainingDay}, ${remainingHour}`;
+		var lastCountdown =  `${remainingEndDate}, ${remainingHour}`;
       } else if (days > 0 && hours === 0) { // Display day and minute
         var countdown = `${remainingDay}, ${remainingMinute}`;
+	    var lastCountdown =  `${remainingEndDate}, ${remainingMinute}`;
       } else if (days === 0 && hours > 0){ // Display hour and minute
+		if (remainingEpisodes > 0){
+		  var lastCountdown =  `${remainingEndDate}, ${remainingHour}`;
+		}
         var countdown = `${remainingHour}, ${remainingMinute}`;
+		
       } else { // Display minute
         var countdown = `${remainingMinute}`;
+		var lastCountdown = countdown;
       }
       
     } else { 
       var episode = media[i].status.replace(/_/g, ' ');
       var countdown = media[i].season + ' ' +media[i].startDate.year;
+	  var lastCountdown = countdown;
     }
-
+	
     // Check if studio is available
     if (media[i].studios.nodes[0] != null) {
       var studio = media[i].studios.nodes[0].name;
@@ -249,8 +285,9 @@ function data(data) {
     } else {
       var anilistUrl = '';
     }
-    // Print anime list
-    document.getElementById('list').innerHTML += `
+	   // Print anime list
+	dict[dictkey] =
+     `
       <div class="item">
         <div href="${anilistUrl}" class="item__thumbnail">
           <img src="${media[i].coverImage.large}" class="item__cover">
@@ -262,6 +299,8 @@ function data(data) {
             <div class="item__airing">
               <span class="item__episode">${episode}</span>
               <span class="item__countdown">${countdown}</span>
+			   <span class="item__episode">Estimated end date in</span>
+			  <span class="item__countdown">${lastCountdown}</span>
             </div>
             <div class="item__rating">
               <span class="item__popularity">${popularity}</span>
@@ -282,6 +321,18 @@ function data(data) {
     `
     expandItem();
   }
+
+const ordered = {};
+Object.keys(dict).sort().forEach(function(key) {
+  ordered[key] = dict[key];
+});
+
+
+	for(var key in ordered) {
+	  var value = ordered[key];
+	  //console.log(key)
+	  document.getElementById('list').innerHTML +=value;
+	}
   // Remove unwanted elements from list (eg. <i>)
   const list = document.getElementById('list');
   for (let i = 0; i < list.children.length; ++i) {
