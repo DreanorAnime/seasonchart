@@ -322,13 +322,13 @@ var dictkey = 0;
     expandItem();
   }
 
-const ordered = {};
-Object.keys(dict).sort().forEach(function(key) {
+  const ordered = {};
+  Object.keys(dict).sort().forEach(function(key) {
   ordered[key] = dict[key];
 });
 
 
-	for(var key in ordered) {
+for(var key in ordered) {
 	  var value = ordered[key];
 	  //console.log(key)
 	  document.getElementById('list').innerHTML +=value;
