@@ -97,16 +97,16 @@ document.getElementById('fall').addEventListener('click', () =>{
 })
 
 document.getElementById('winterNext').addEventListener('click', () =>{
-  displayNextSeason('winterNext', 'WINTER NEXT')
+  displayNextSeason('winterNext', 'WINTER')
 })
 document.getElementById('springNext').addEventListener('click', () =>{
-  displayNextSeason('springNext', 'SPRING NEXT')
+  displayNextSeason('springNext', 'SPRING')
 })
 document.getElementById('summerNext').addEventListener('click', () =>{
-  displayNextSeason('summerNext', 'SUMMER NEXT')
+  displayNextSeason('summerNext', 'SUMMER')
 })
 document.getElementById('fallNext').addEventListener('click', () =>{
-  displayNextSeason('fallNext', 'FALL NEXT')
+  displayNextSeason('fallNext', 'FALL')
 })
 
 
