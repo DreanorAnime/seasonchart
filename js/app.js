@@ -97,10 +97,10 @@ document.getElementById('fall').addEventListener('click', () =>{
 })
 
 document.getElementById('winterNext').addEventListener('click', () =>{
-  displayNextSeason('winterNext', 'WINTER')
+  displayNextSeason('winterNext', 'WINTER NEXT')
 })
 document.getElementById('springNext').addEventListener('click', () =>{
-  displayNextSeason('springNext', 'SPRING')
+  displayNextSeason('springNext', 'SPRING NEXT')
 })
 
 // Set options to filter
