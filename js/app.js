@@ -102,6 +102,13 @@ document.getElementById('winterNext').addEventListener('click', () =>{
 document.getElementById('springNext').addEventListener('click', () =>{
   displayNextSeason('springNext', 'SPRING NEXT')
 })
+document.getElementById('summerNext').addEventListener('click', () =>{
+  displayNextSeason('summerNext', 'SUMMER NEXT')
+})
+document.getElementById('fallNext').addEventListener('click', () =>{
+  displayNextSeason('fallNext', 'FALL NEXT')
+})
+
 
 // Set options to filter
 function setFilter(season, sort) {
